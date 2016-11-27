@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}Our products{% endblock %}
+{% block content %}
+    <div class="row marketing">
+        {% for category in menu %}
+            <div class="col-lg-4"  >
+                    <div class="panel panel-default">
+                         <div class="panel-body bg-info">
+                    {% if category.name == 'Sales' %}
+                        <h4><p class="s1">{{ category.name }}</p></h4>
+                            <div class="caption">
+                                <p>{{ category.description }}</p>
+                                <div class="s2">
+                                <a href="/search-sale" class="btn btn-primary" role="button">{% include 'search_f.html' with field=category.name %}</a>
+                                </div>
+                            </div>
+                    {% elif category.name != 'Sales' %}
+                    <h4> <p class="s2">{{ category.name }}</p></h4>
+                            <div class="caption">
+                                <p>{{ category.description }}</p>
+                                <div class="s2">
+                                    {% if category.name == 'New Collection' %}
+                                        <a href="/search-new" class="btn btn-primary" role="button">{% include 'search_f.html' with field=category.name %}</a>
+                                    {% elif category.name != 'New Collection' %}
+                                        <a href="/search-basic" class="btn btn-primary" role="button">{% include 'search_f.html' with field=category.name %}</a>
+                                    {% endif %}
+                                </div>
+                            </div>
+                    {% endif %}
+                        </div>
+                    </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

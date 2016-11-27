@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% csrf_token %}
+{% block title %}Welcome to our shop!{% endblock %}
+{% block content %}
+    <div class="jumbotron">
+        <p class="lead">Dear {{ var_name }}! We are glad to see you in our store. Have a good shopping! Click on the link below to begin. </p>
+        <a href="/shop" class="btn btn-primary" role="button" >Go shopping</a>
+
+    </div>
+{% endblock %}
+
